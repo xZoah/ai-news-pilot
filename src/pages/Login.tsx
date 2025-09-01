@@ -31,15 +31,15 @@ export default function Login() {
             <div className="mx-auto w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4">
               <Bot className="w-6 h-6 text-primary-foreground" />
             </div>
-            <CardTitle className="text-2xl font-bold">AI News Aggregator</CardTitle>
+            <CardTitle className="text-2xl font-bold">Агрегатор AI Новостей</CardTitle>
             <CardDescription>
-              Sign in to your admin panel to manage your AI news system
+              Войдите в панель администратора для управления системой AI новостей
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <form onSubmit={handleLogin} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">Электронная почта</Label>
                 <Input
                   id="email"
                   type="email"
@@ -50,12 +50,12 @@ export default function Login() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">Пароль</Label>
                 <div className="relative">
                   <Input
                     id="password"
                     type={showPassword ? "text" : "password"}
-                    placeholder="Enter your password"
+                    placeholder="Введите ваш пароль"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
@@ -76,7 +76,7 @@ export default function Login() {
                 </div>
               </div>
               <Button type="submit" className="w-full gradient-primary shadow-glow">
-                Sign In
+                Войти
               </Button>
             </form>
 
@@ -86,7 +86,7 @@ export default function Login() {
               </div>
               <div className="relative flex justify-center text-xs uppercase">
                 <span className="bg-background px-2 text-muted-foreground">
-                  Or continue as
+                  Или продолжить как
                 </span>
               </div>
             </div>
@@ -97,11 +97,11 @@ export default function Login() {
               onClick={handleGuestMode}
               className="w-full"
             >
-              Continue as Guest
+              Продолжить как гость
             </Button>
             
             <p className="text-xs text-muted-foreground text-center">
-              Guest mode provides read-only access to the dashboard
+              Гостевой режим предоставляет доступ только для чтения
             </p>
           </CardContent>
         </Card>

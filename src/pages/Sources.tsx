@@ -16,25 +16,25 @@ const mockSources = [
     url: "https://techcrunch.com/feed/", 
     type: "rss", 
     isActive: true,
-    lastSync: "2 minutes ago",
+    lastSync: "2 минуты назад",
     articles: 156
   },
   { 
     id: 2, 
-    name: "AI News Channel", 
+    name: "Канал AI новостей", 
     url: "https://t.me/ainewschannel", 
     type: "telegram", 
     isActive: true,
-    lastSync: "5 minutes ago",
+    lastSync: "5 минут назад",
     articles: 89
   },
   { 
     id: 3, 
-    name: "BBC Technology", 
+    name: "BBC Технологии", 
     url: "https://feeds.bbci.co.uk/news/technology/rss.xml", 
     type: "rss", 
     isActive: false,
-    lastSync: "2 hours ago",
+    lastSync: "2 часа назад",
     articles: 234
   },
   { 
@@ -43,7 +43,7 @@ const mockSources = [
     url: "https://www.theverge.com/rss/index.xml", 
     type: "rss", 
     isActive: true,
-    lastSync: "10 minutes ago",
+    lastSync: "10 минут назад",
     articles: 78
   }
 ];
@@ -74,20 +74,20 @@ function SourceDialog({ source, onSave, onClose }: {
   return (
     <DialogContent>
       <DialogHeader>
-        <DialogTitle>{source ? 'Edit Source' : 'Add New Source'}</DialogTitle>
+        <DialogTitle>{source ? 'Редактировать источник' : 'Добавить новый источник'}</DialogTitle>
         <DialogDescription>
-          Configure a news source for your AI aggregation system.
+          Настройте источник новостей для вашей системы агрегации ИИ.
         </DialogDescription>
       </DialogHeader>
       <form onSubmit={handleSubmit}>
         <div className="space-y-4 py-4">
           <div className="space-y-2">
-            <Label htmlFor="name">Source Name</Label>
+            <Label htmlFor="name">Название источника</Label>
             <Input
               id="name"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              placeholder="e.g., TechCrunch"
+              placeholder="напр., TechCrunch"
               required
             />
           </div>
@@ -102,25 +102,25 @@ function SourceDialog({ source, onSave, onClose }: {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="type">Source Type</Label>
+            <Label htmlFor="type">Тип источника</Label>
             <Select value={formData.type} onValueChange={(value) => setFormData({ ...formData, type: value })}>
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="rss">RSS Feed</SelectItem>
-                <SelectItem value="telegram">Telegram Channel</SelectItem>
-                <SelectItem value="website">Website Scraper</SelectItem>
+                <SelectItem value="rss">RSS лента</SelectItem>
+                <SelectItem value="telegram">Telegram канал</SelectItem>
+                <SelectItem value="website">Веб-скрапер</SelectItem>
               </SelectContent>
             </Select>
           </div>
         </div>
         <DialogFooter>
           <Button type="button" variant="outline" onClick={onClose}>
-            Cancel
+            Отмена
           </Button>
           <Button type="submit" className="gradient-primary">
-            {source ? 'Update' : 'Add'} Source
+            {source ? 'Обновить' : 'Добавить'} источник
           </Button>
         </DialogFooter>
       </form>
@@ -176,16 +176,16 @@ export default function Sources() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">News Sources</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Источники новостей</h1>
           <p className="text-muted-foreground">
-            Manage and configure your news sources for content aggregation.
+            Управляйте и настраивайте ваши источники новостей для агрегации контента.
           </p>
         </div>
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
           <DialogTrigger asChild>
             <Button onClick={handleAddNew} className="gradient-primary shadow-glow">
               <Plus className="w-4 h-4 mr-2" />
-              Add Source
+              Добавить источник
             </Button>
           </DialogTrigger>
           <SourceDialog 
@@ -201,19 +201,19 @@ export default function Sources() {
         <Card className="gradient-card border-border/50">
           <CardContent className="p-4">
             <div className="text-2xl font-bold">{sources.length}</div>
-            <p className="text-sm text-muted-foreground">Total Sources</p>
+            <p className="text-sm text-muted-foreground">Всего источников</p>
           </CardContent>
         </Card>
         <Card className="gradient-card border-border/50">
           <CardContent className="p-4">
             <div className="text-2xl font-bold">{sources.filter(s => s.isActive).length}</div>
-            <p className="text-sm text-muted-foreground">Active Sources</p>
+            <p className="text-sm text-muted-foreground">Активных источников</p>
           </CardContent>
         </Card>
         <Card className="gradient-card border-border/50">
           <CardContent className="p-4">
             <div className="text-2xl font-bold">{sources.reduce((sum, s) => sum + s.articles, 0)}</div>
-            <p className="text-sm text-muted-foreground">Total Articles</p>
+            <p className="text-sm text-muted-foreground">Всего статей</p>
           </CardContent>
         </Card>
       </div>
@@ -221,9 +221,9 @@ export default function Sources() {
       {/* Sources Table */}
       <Card className="gradient-card border-border/50">
         <CardHeader>
-          <CardTitle>Configured Sources</CardTitle>
+          <CardTitle>Настроенные источники</CardTitle>
           <CardDescription>
-            All news sources currently configured in your system.
+            Все источники новостей, настроенные в вашей системе.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -248,8 +248,8 @@ export default function Sources() {
                       {source.url}
                     </p>
                     <div className="flex items-center space-x-4 text-xs text-muted-foreground mt-1">
-                      <span>Last sync: {source.lastSync}</span>
-                      <span>Articles: {source.articles}</span>
+                      <span>Последняя синхронизация: {source.lastSync}</span>
+                      <span>Статьи: {source.articles}</span>
                     </div>
                   </div>
                 </div>
@@ -257,7 +257,7 @@ export default function Sources() {
                 <div className="flex items-center space-x-4">
                   <div className="flex items-center space-x-2">
                     <Label htmlFor={`active-${source.id}`} className="text-sm">
-                      Active
+                      Активен
                     </Label>
                     <Switch
                       id={`active-${source.id}`}

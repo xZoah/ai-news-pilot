@@ -6,48 +6,48 @@ import dashboardHero from "@/assets/dashboard-hero.jpg";
 
 const stats = [
   {
-    title: "Posts Generated Today",
+    title: "Постов создано сегодня",
     value: "24",
     change: "+12%",
     icon: FileText,
     trend: "up"
   },
   {
-    title: "Active Sources",
+    title: "Активных источников",
     value: "15",
     change: "+2",
     icon: Globe,
     trend: "up"
   },
   {
-    title: "Errors (24h)",
+    title: "Ошибок (24ч)",
     value: "2",
     change: "-5",
     icon: AlertTriangle,
     trend: "down"
   },
   {
-    title: "Processing Time",
-    value: "1.2s",
-    change: "-0.3s",
+    title: "Время обработки",
+    value: "1.2с",
+    change: "-0.3с",
     icon: Clock,
     trend: "down"
   }
 ];
 
 const services = [
-  { name: "AI Content Generator", status: "online", lastActive: "2 minutes ago" },
-  { name: "News Scraper", status: "online", lastActive: "30 seconds ago" },
-  { name: "Content Publisher", status: "warning", lastActive: "15 minutes ago" },
-  { name: "Database", status: "online", lastActive: "1 minute ago" }
+  { name: "Генератор AI контента", status: "online", lastActive: "2 минуты назад" },
+  { name: "Парсер новостей", status: "online", lastActive: "30 секунд назад" },
+  { name: "Публикатор контента", status: "warning", lastActive: "15 минут назад" },
+  { name: "База данных", status: "online", lastActive: "1 минута назад" }
 ];
 
 const recentActivity = [
-  { action: "Generated new post", source: "TechCrunch", time: "2 min ago", status: "success" },
-  { action: "Scraped articles", source: "Multiple sources", time: "5 min ago", status: "success" },
-  { action: "Published post", source: "Telegram Channel", time: "8 min ago", status: "success" },
-  { action: "Failed to process", source: "BBC News", time: "12 min ago", status: "error" },
-  { action: "Updated source config", source: "Settings", time: "1 hour ago", status: "info" }
+  { action: "Создан новый пост", source: "TechCrunch", time: "2 мин назад", status: "success" },
+  { action: "Статьи спаршены", source: "Несколько источников", time: "5 мин назад", status: "success" },
+  { action: "Пост опубликован", source: "Telegram канал", time: "8 мин назад", status: "success" },
+  { action: "Ошибка обработки", source: "BBC News", time: "12 мин назад", status: "error" },
+  { action: "Обновлена конфигурация источника", source: "Настройки", time: "1 час назад", status: "info" }
 ];
 
 function StatusBadge({ status }: { status: string }) {
@@ -63,7 +63,8 @@ function StatusBadge({ status }: { status: string }) {
         status === 'online' ? 'bg-success' : 
         status === 'warning' ? 'bg-warning' : 'bg-destructive'
       }`} />
-      {status.charAt(0).toUpperCase() + status.slice(1)}
+      {status === 'online' ? 'Онлайн' : 
+       status === 'warning' ? 'Предупреждение' : 'Оффлайн'}
     </Badge>
   );
 }
@@ -74,14 +75,14 @@ export default function Dashboard() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Панель управления</h1>
           <p className="text-muted-foreground">
-            Welcome back! Here's what's happening with your AI News system.
+            Добро пожаловать! Вот что происходит с вашей системой AI новостей.
           </p>
         </div>
         <Button className="gradient-primary shadow-glow">
           <Activity className="w-4 h-4 mr-2" />
-          View Analytics
+          Просмотр аналитики
         </Button>
       </div>
 
@@ -90,14 +91,14 @@ export default function Dashboard() {
         <CardContent className="p-0">
           <div className="flex items-center">
             <div className="flex-1 p-6">
-              <h2 className="text-2xl font-bold mb-2">AI-Powered News Aggregation</h2>
+              <h2 className="text-2xl font-bold mb-2">Агрегация новостей с помощью ИИ</h2>
               <p className="text-muted-foreground mb-4">
-                Your intelligent news aggregation system is running smoothly, processing articles 
-                from multiple sources and generating engaging content for your audience.
+                Ваша интеллектуальная система агрегации новостей работает исправно, обрабатывая статьи 
+                из множества источников и создавая привлекательный контент для вашей аудитории.
               </p>
               <div className="flex space-x-3">
-                <Button variant="outline">View Sources</Button>
-                <Button className="gradient-primary">Manage Content</Button>
+                <Button variant="outline">Просмотр источников</Button>
+                <Button className="gradient-primary">Управление контентом</Button>
               </div>
             </div>
             <div className="hidden md:block">
@@ -126,7 +127,7 @@ export default function Dashboard() {
               <p className={`text-xs ${
                 stat.trend === 'up' ? 'text-success' : 'text-destructive'
               }`}>
-                {stat.change} from yesterday
+                {stat.change} с вчерашнего дня
               </p>
             </CardContent>
           </Card>
@@ -137,9 +138,9 @@ export default function Dashboard() {
         {/* Service Status */}
         <Card className="gradient-card border-border/50">
           <CardHeader>
-            <CardTitle>System Status</CardTitle>
+            <CardTitle>Состояние системы</CardTitle>
             <CardDescription>
-              Current status of all system services
+              Текущее состояние всех системных сервисов
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -158,9 +159,9 @@ export default function Dashboard() {
         {/* Recent Activity */}
         <Card className="gradient-card border-border/50">
           <CardHeader>
-            <CardTitle>Recent Activity</CardTitle>
+            <CardTitle>Недавняя активность</CardTitle>
             <CardDescription>
-              Latest actions and events from your system
+              Последние действия и события в вашей системе
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -186,9 +187,9 @@ export default function Dashboard() {
       {/* Next Post Preview */}
       <Card className="gradient-card border-border/50">
         <CardHeader>
-          <CardTitle>Next Scheduled Post</CardTitle>
+          <CardTitle>Следующий запланированный пост</CardTitle>
           <CardDescription>
-            Preview of the next post scheduled for publication
+            Предварительный просмотр следующего поста, запланированного для публикации
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -196,21 +197,21 @@ export default function Dashboard() {
             <div className="flex items-start justify-between mb-3">
               <div className="flex-1">
                 <h3 className="font-semibold text-lg mb-2">
-                  🤖 AI Breakthrough: New Language Model Achieves Human-Level Performance
+                  🤖 Прорыв в ИИ: новая языковая модель достигает человеческого уровня производительности
                 </h3>
                 <p className="text-muted-foreground text-sm mb-3">
-                  Researchers have developed a revolutionary AI system that demonstrates 
-                  unprecedented capabilities in natural language understanding and generation...
+                  Исследователи разработали революционную систему ИИ, которая демонстрирует 
+                  беспрецедентные возможности в понимании и генерации естественного языка...
                 </p>
                 <div className="flex items-center space-x-4 text-xs text-muted-foreground">
-                  <span>📅 Scheduled for: Today, 14:00</span>
-                  <span>📊 Estimated reach: 1,200+ subscribers</span>
+                  <span>📅 Запланировано на: Сегодня, 14:00</span>
+                  <span>📊 Ожидаемый охват: 1200+ подписчиков</span>
                 </div>
               </div>
             </div>
             <div className="flex justify-end space-x-2">
-              <Button variant="outline" size="sm">Edit</Button>
-              <Button size="sm" className="gradient-primary">Publish Now</Button>
+              <Button variant="outline" size="sm">Редактировать</Button>
+              <Button size="sm" className="gradient-primary">Опубликовать сейчас</Button>
             </div>
           </div>
         </CardContent>

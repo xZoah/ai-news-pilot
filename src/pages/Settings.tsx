@@ -11,11 +11,11 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 
 const mockScoringRules = [
-  { id: 1, keyword: "artificial intelligence", weight: 10 },
-  { id: 2, keyword: "machine learning", weight: 8 },
-  { id: 3, keyword: "neural network", weight: 7 },
-  { id: 4, keyword: "deep learning", weight: 9 },
-  { id: 5, keyword: "robotics", weight: 6 }
+  { id: 1, keyword: "искусственный интеллект", weight: 10 },
+  { id: 2, keyword: "машинное обучение", weight: 8 },
+  { id: 3, keyword: "нейронная сеть", weight: 7 },
+  { id: 4, keyword: "глубокое обучение", weight: 9 },
+  { id: 5, keyword: "робототехника", weight: 6 }
 ];
 
 export default function Settings() {
@@ -27,15 +27,15 @@ export default function Settings() {
     stabilityKey: "sk-...",
     primaryLLM: "openai",
     fallbackLLM: "gemini",
-    digestPrompt: `You are an AI news aggregator. Transform the following articles into engaging, informative posts for a Telegram channel focused on AI and technology news.
+    digestPrompt: `Вы - агрегатор AI новостей. Преобразуйте следующие статьи в интересные, информативные посты для Telegram канала, посвященного AI и технологическим новостям.
 
-Guidelines:
-- Use emojis to make posts visually appealing
-- Keep posts concise but informative (max 500 characters)
-- Include relevant hashtags
-- Maintain a professional yet engaging tone
-- Focus on the most important aspects of each story`,
-    imagePrompt: "Create a modern, tech-focused illustration for this AI/technology news article. Use a clean, professional style with blue and purple gradients. The image should be visually appealing for social media.",
+Рекомендации:
+- Используйте эмодзи, чтобы сделать посты визуально привлекательными
+- Делайте посты краткими, но информативными (максимум 500 символов)
+- Включайте соответствующие хештеги
+- Поддерживайте профессиональный, но увлекательный тон
+- Сосредоточьтесь на наиболее важных аспектах каждой истории`,
+    imagePrompt: "Создайте современную, технически ориентированную иллюстрацию для этой статьи об ИИ/технологиях. Используйте чистый профессиональный стиль с синими и фиолетовыми градиентами. Изображение должно быть визуально привлекательным для социальных сетей.",
     scraperInterval: "2",
     publishTime: "09:00"
   });
@@ -46,15 +46,15 @@ Guidelines:
 
   const handleSaveGeneral = () => {
     toast({
-      title: "Settings saved",
-      description: "General settings have been updated successfully.",
+      title: "Настройки сохранены",
+      description: "Общие настройки были успешно обновлены.",
     });
   };
 
   const handleSaveAI = () => {
     toast({
-      title: "AI settings saved", 
-      description: "AI model and prompt settings have been updated.",
+      title: "Настройки ИИ сохранены", 
+      description: "Настройки модели ИИ и промптов были обновлены.",
     });
   };
 
@@ -67,8 +67,8 @@ Guidelines:
       }]);
       setNewRule({ keyword: "", weight: "" });
       toast({
-        title: "Rule added",
-        description: "New scoring rule has been added successfully.",
+        title: "Правило добавлено",
+        description: "Новое правило оценки было успешно добавлено.",
       });
     }
   };
@@ -76,15 +76,15 @@ Guidelines:
   const handleDeleteRule = (id: number) => {
     setScoringRules(scoringRules.filter(rule => rule.id !== id));
     toast({
-      title: "Rule deleted",
-      description: "Scoring rule has been removed.",
+      title: "Правило удалено",
+      description: "Правило оценки было удалено.",
     });
   };
 
   const handleSaveSchedule = () => {
     toast({
-      title: "Schedule updated",
-      description: "Automation schedule has been saved.",
+      title: "Расписание обновлено",
+      description: "Расписание автоматизации было сохранено.",
     });
   };
 
@@ -93,9 +93,9 @@ Guidelines:
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Settings</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Настройки</h1>
           <p className="text-muted-foreground">
-            Configure your AI news aggregation system.
+            Настройте вашу систему агрегации AI новостей.
           </p>
         </div>
       </div>
@@ -104,19 +104,19 @@ Guidelines:
         <TabsList className="grid w-full grid-cols-4">
           <TabsTrigger value="general" className="flex items-center space-x-2">
             <Key className="w-4 h-4" />
-            <span>General</span>
+            <span>Общие</span>
           </TabsTrigger>
           <TabsTrigger value="ai" className="flex items-center space-x-2">
             <Bot className="w-4 h-4" />
-            <span>AI & Prompts</span>
+            <span>ИИ и Промпты</span>
           </TabsTrigger>
           <TabsTrigger value="scoring" className="flex items-center space-x-2">
             <Target className="w-4 h-4" />
-            <span>Scoring Rules</span>
+            <span>Правила оценки</span>
           </TabsTrigger>
           <TabsTrigger value="schedule" className="flex items-center space-x-2">
             <Clock className="w-4 h-4" />
-            <span>Schedule</span>
+            <span>Расписание</span>
           </TabsTrigger>
         </TabsList>
 
@@ -124,38 +124,38 @@ Guidelines:
         <TabsContent value="general">
           <Card className="gradient-card border-border/50">
             <CardHeader>
-              <CardTitle>General Configuration</CardTitle>
+              <CardTitle>Общие настройки</CardTitle>
               <CardDescription>
-                Configure API keys and basic system settings.
+                Настройте API ключи и основные системные параметры.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="telegram-token">Telegram Bot Token</Label>
+                    <Label htmlFor="telegram-token">Токен Telegram бота</Label>
                     <Input
                       id="telegram-token"
                       type="password"
                       value={settings.telegramToken}
                       onChange={(e) => setSettings({...settings, telegramToken: e.target.value})}
-                      placeholder="Enter your Telegram bot token"
+                      placeholder="Введите токен вашего Telegram бота"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="channel-id">Telegram Channel ID</Label>
+                    <Label htmlFor="channel-id">ID Telegram канала</Label>
                     <Input
                       id="channel-id"
                       value={settings.channelId}
                       onChange={(e) => setSettings({...settings, channelId: e.target.value})}
-                      placeholder="@your_channel_name"
+                      placeholder="@ваш_канал"
                     />
                   </div>
                 </div>
                 
                 <div className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="openai-key">OpenAI API Key</Label>
+                    <Label htmlFor="openai-key">API ключ OpenAI</Label>
                     <Input
                       id="openai-key"
                       type="password"
@@ -165,7 +165,7 @@ Guidelines:
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="gemini-key">Gemini API Key</Label>
+                    <Label htmlFor="gemini-key">API ключ Gemini</Label>
                     <Input
                       id="gemini-key"
                       type="password" 
@@ -175,7 +175,7 @@ Guidelines:
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="stability-key">Stability AI Key</Label>
+                    <Label htmlFor="stability-key">Ключ Stability AI</Label>
                     <Input
                       id="stability-key"
                       type="password"
@@ -190,7 +190,7 @@ Guidelines:
               <div className="flex justify-end">
                 <Button onClick={handleSaveGeneral} className="gradient-primary">
                   <Save className="w-4 h-4 mr-2" />
-                  Save General Settings
+                  Сохранить общие настройки
                 </Button>
               </div>
             </CardContent>
@@ -201,15 +201,15 @@ Guidelines:
         <TabsContent value="ai">
           <Card className="gradient-card border-border/50">
             <CardHeader>
-              <CardTitle>AI Model Configuration</CardTitle>
+              <CardTitle>Настройка модели ИИ</CardTitle>
               <CardDescription>
-                Configure AI models and customize prompts for content generation.
+                Настройте модели ИИ и кастомизируйте промпты для генерации контента.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="primary-llm">Primary LLM</Label>
+                  <Label htmlFor="primary-llm">Основная LLM</Label>
                   <Select value={settings.primaryLLM} onValueChange={(value) => setSettings({...settings, primaryLLM: value})}>
                     <SelectTrigger>
                       <SelectValue />
@@ -223,7 +223,7 @@ Guidelines:
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="fallback-llm">Fallback LLM</Label>
+                  <Label htmlFor="fallback-llm">Резервная LLM</Label>
                   <Select value={settings.fallbackLLM} onValueChange={(value) => setSettings({...settings, fallbackLLM: value})}>
                     <SelectTrigger>
                       <SelectValue />
@@ -238,31 +238,31 @@ Guidelines:
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="digest-prompt">Content Generation Prompt</Label>
+                <Label htmlFor="digest-prompt">Промпт для генерации контента</Label>
                 <Textarea
                   id="digest-prompt"
                   value={settings.digestPrompt}
                   onChange={(e) => setSettings({...settings, digestPrompt: e.target.value})}
                   className="min-h-32"
-                  placeholder="Enter your system prompt for content generation..."
+                  placeholder="Введите ваш системный промпт для генерации контента..."
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="image-prompt">Image Generation Prompt</Label>
+                <Label htmlFor="image-prompt">Промпт для генерации изображений</Label>
                 <Textarea
                   id="image-prompt"
                   value={settings.imagePrompt}
                   onChange={(e) => setSettings({...settings, imagePrompt: e.target.value})}
                   className="min-h-24"
-                  placeholder="Enter your prompt template for image generation..."
+                  placeholder="Введите ваш шаблон промпта для генерации изображений..."
                 />
               </div>
 
               <div className="flex justify-end">
                 <Button onClick={handleSaveAI} className="gradient-primary">
                   <Save className="w-4 h-4 mr-2" />
-                  Save AI Settings
+                  Сохранить настройки ИИ
                 </Button>
               </div>
             </CardContent>
@@ -273,30 +273,30 @@ Guidelines:
         <TabsContent value="scoring">
           <Card className="gradient-card border-border/50">
             <CardHeader>
-              <CardTitle>Content Scoring Rules</CardTitle>
+              <CardTitle>Правила оценки контента</CardTitle>
               <CardDescription>
-                Define keywords and their weights to prioritize content based on relevance.
+                Определите ключевые слова и их веса для приоритизации контента по релевантности.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               {/* Add New Rule */}
               <div className="flex space-x-4 p-4 bg-secondary/30 rounded-lg">
                 <Input
-                  placeholder="Keyword (e.g., artificial intelligence)"
+                  placeholder="Ключевое слово (например, искусственный интеллект)"
                   value={newRule.keyword}
                   onChange={(e) => setNewRule({...newRule, keyword: e.target.value})}
                   className="flex-1"
                 />
                 <Input
                   type="number"
-                  placeholder="Weight"
+                  placeholder="Вес"
                   value={newRule.weight}
                   onChange={(e) => setNewRule({...newRule, weight: e.target.value})}
                   className="w-24"
                 />
                 <Button onClick={handleAddRule} className="gradient-primary">
                   <Plus className="w-4 h-4 mr-2" />
-                  Add Rule
+                  Добавить правило
                 </Button>
               </div>
 
@@ -306,7 +306,7 @@ Guidelines:
                   <div key={rule.id} className="flex items-center justify-between p-3 bg-secondary/30 rounded-lg">
                     <div className="flex items-center space-x-3">
                       <span className="font-medium">{rule.keyword}</span>
-                      <Badge variant="outline">Weight: {rule.weight}</Badge>
+                      <Badge variant="outline">Вес: {rule.weight}</Badge>
                     </div>
                     <div className="flex space-x-2">
                       <Button variant="ghost" size="sm">
@@ -328,7 +328,7 @@ Guidelines:
               <div className="flex justify-end">
                 <Button className="gradient-primary">
                   <Save className="w-4 h-4 mr-2" />
-                  Save Scoring Rules
+                  Сохранить правила оценки
                 </Button>
               </div>
             </CardContent>
@@ -339,32 +339,32 @@ Guidelines:
         <TabsContent value="schedule">
           <Card className="gradient-card border-border/50">
             <CardHeader>
-              <CardTitle>Automation Schedule</CardTitle>
+              <CardTitle>Расписание автоматизации</CardTitle>
               <CardDescription>
-                Configure when your system should automatically scrape and publish content.
+                Настройте, когда ваша система должна автоматически собирать и публиковать контент.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="scraper-interval">Scraper Interval (hours)</Label>
+                  <Label htmlFor="scraper-interval">Интервал парсера (часы)</Label>
                   <Select value={settings.scraperInterval} onValueChange={(value) => setSettings({...settings, scraperInterval: value})}>
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="1">Every hour</SelectItem>
-                      <SelectItem value="2">Every 2 hours</SelectItem>
-                      <SelectItem value="4">Every 4 hours</SelectItem>
-                      <SelectItem value="6">Every 6 hours</SelectItem>
-                      <SelectItem value="12">Every 12 hours</SelectItem>
-                      <SelectItem value="24">Once per day</SelectItem>
+                      <SelectItem value="1">Каждый час</SelectItem>
+                      <SelectItem value="2">Каждые 2 часа</SelectItem>
+                      <SelectItem value="4">Каждые 4 часа</SelectItem>
+                      <SelectItem value="6">Каждые 6 часов</SelectItem>
+                      <SelectItem value="12">Каждые 12 часов</SelectItem>
+                      <SelectItem value="24">Раз в день</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="publish-time">Daily Publish Time</Label>
+                  <Label htmlFor="publish-time">Время ежедневной публикации</Label>
                   <Input
                     id="publish-time"
                     type="time"
@@ -375,19 +375,19 @@ Guidelines:
               </div>
 
               <div className="p-4 bg-secondary/30 rounded-lg">
-                <h4 className="font-medium mb-2">Current Schedule</h4>
+                <h4 className="font-medium mb-2">Текущее расписание</h4>
                 <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>• Content scraping: Every {settings.scraperInterval} hour(s)</li>
-                  <li>• Daily publication: {settings.publishTime}</li>
-                  <li>• Next scrape: In 1 hour 23 minutes</li>
-                  <li>• Next publication: Today at {settings.publishTime}</li>
+                  <li>• Парсинг контента: Каждые {settings.scraperInterval} час(ов)</li>
+                  <li>• Ежедневная публикация: {settings.publishTime}</li>
+                  <li>• Следующий парсинг: Через 1 час 23 минуты</li>
+                  <li>• Следующая публикация: Сегодня в {settings.publishTime}</li>
                 </ul>
               </div>
 
               <div className="flex justify-end">
                 <Button onClick={handleSaveSchedule} className="gradient-primary">
                   <Save className="w-4 h-4 mr-2" />
-                  Save Schedule
+                  Сохранить расписание
                 </Button>
               </div>
             </CardContent>

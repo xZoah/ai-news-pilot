@@ -13,10 +13,10 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 const navigation = [
-  { name: "Dashboard", href: "/", icon: LayoutDashboard },
-  { name: "Sources", href: "/sources", icon: Globe },
-  { name: "Content", href: "/content", icon: FileText },
-  { name: "Settings", href: "/settings", icon: Settings },
+  { name: "Панель управления", href: "/", icon: LayoutDashboard },
+  { name: "Источники", href: "/sources", icon: Globe },
+  { name: "Контент", href: "/content", icon: FileText },
+  { name: "Настройки", href: "/settings", icon: Settings },
 ];
 
 export function Sidebar() {
@@ -43,7 +43,7 @@ export function Sidebar() {
               <Bot className="w-4 h-4 text-primary-foreground" />
             </div>
             <span className="text-lg font-semibold text-sidebar-foreground">
-              AI News
+              AI Новости
             </span>
           </div>
         )}
@@ -95,12 +95,12 @@ export function Sidebar() {
           <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
             <span className="text-xs text-primary-foreground font-medium">A</span>
           </div>
-          {!isCollapsed && (
-            <div className="ml-3">
-              <p className="text-sm font-medium">Admin User</p>
+          <div className="ml-3">
+            <div>
+              <p className="text-sm font-medium">Администратор</p>
               <p className="text-xs text-sidebar-foreground/70">admin@ai-news.com</p>
             </div>
-          )}
+          </div>
         </div>
       </div>
     </div>
